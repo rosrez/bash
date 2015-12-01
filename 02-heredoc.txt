@@ -1,0 +1,5 @@
+Heredoc syntax looks like this:
+
+$ wc << EOF
+> this is a test
+> EOF

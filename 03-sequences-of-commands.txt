@@ -1,0 +1,33 @@
+Syntax for running a program in the background:
+
+./somecommand &
+
+When the command finishes, the shell will display a message [1] Done ./somework.
+
+----------------------
+
+Lumping several related commands together:
+
+pwd; ls
+
+----------------------
+
+We can wait until a background job finishes:
+
+$ ./somework &
+[1] 23633
+
+$ wait 23633
+[1]+ Done      ./somework
+
+The wait command did not return until ./somework completed.
+
+---------------------
+
+We can start several processes in the background and wait for all of them to complete with the wait command like this:
+
+$ ./somework &
+
+$ ./morework &
+
+wait                <---- WAITS FOR BOTH

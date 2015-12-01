@@ -1,0 +1,43 @@
+bash -n
+-------
+Doesn't run the script but checks the syntax.
+
+bash -v
+-------
+Will echo out as it reads it (while running the script at the same time, so the output of bash and the script is interleaved).
+
+bash -x
+-------
+This will echo out commands as it is about to execute it.
+
+EXAMPLE: THE DIFFERENCE BETWEEN -v and -x.
+
+We have a script pwd_ls.sh:
+
+++++++
+# where we are
+pwd
+# what files we have
+ls
+++++++
+
+If we invoke bash -v pwd_ls.sh, the output is this:
+
+# where we are
+pwd
+/home/admin/src/shell/bash
+# what files we have
+ls
+
+So, bash has just output it line by line, including comments.
+
+Now, if we invoke bash -x pwd_ls.sh, the output will be:
+
++ pwd
+/home/admin/src/shell/bash
++ ls
+01-redirection.txt  02-heredoc.txt  03-sequences-of-commands.txt  phonebook  pwd_ls.sh
+
+Comments are ignored because they are not executable statements.
+
+

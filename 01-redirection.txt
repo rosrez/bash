@@ -1,0 +1,35 @@
+Redirecting stdout:
+
+wc < file
+
+Redirecting stdout:
+
+ls -l file > lsout
+
+Redirecting stderr:
+
+ls -l file 2> lserr
+
+Combining redirection of stdout and stderr:
+
+ls -l file > lsout 2> lserr
+
+Redirecting to the same target:
+
+ls -l file &> lsboth
+
+Redirect stderr to the same file descriptor as stderr:
+
+ls -l file > lsout 2>&1
+
+NOTE that the order is important while redirecting to the same descriptor. This command is different from the previous one:
+
+ls -l file 2>&1 > lsout
+
+First, this command redirects stderr to stdout (which is the terminal) and THEN redirects stdout to the lsout file.
+
+Combine redirection with pipe:
+
+ls file 2>&1 | wc
+
+This redirects ls's stdin to stdout and then pipes stdout to wc.

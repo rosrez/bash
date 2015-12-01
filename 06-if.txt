@@ -1,0 +1,10 @@
+If command syntaxt:
+
+if condition
+then
+   true branch
+else
+   false branch
+fi
+
+It is possible to combine the above on the same line.

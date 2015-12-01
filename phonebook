@@ -1,0 +1,7 @@
+grep -i $* <<EOF
+bob 555-1212
+bill 555-1234
+ben 555-7890
+john 555-2323
+nancy 555-2020
+EOF
