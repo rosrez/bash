@@ -1,0 +1,43 @@
+@@
+1. BASIC READ USAGE
+
+$ read VAR
+here is my answer
+
+$ echo $VAR
+here is my answer
+ 
+@@
+2. READ WITH A PROMPT
+
+$ read -p "Enter your answer " VAR
+Enter your answer OK
+
+$ echo $VAR
+OK
+
+@@
+3. READ PARSING MULTI-WORD INPUT
+
+$ read A B
+here is my answer
+
+$ echo A
+here                                <--- the first word goes to the first variable
+
+$ echo B
+is my input                         <--- the rest of the line goes to the last variable
+
+
+
+$ read A B C
+here is my answer
+
+$ echo $A                           <--- the first word goes into the first variable
+here
+
+$ echo $B                           <--- the second word goes into the second variable
+is
+
+$ echo $C                           <--- the last word goes into the third variable
+my answer

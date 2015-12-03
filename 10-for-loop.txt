@@ -1,0 +1,30 @@
+@@
+1. FOR LOOP WITHOUT AN 'IN' KEYWORD
+
+Without the 'in' keyword, the control variable in a loop assumes values from the command line, i.e. $1, $2, etc. One at a time. This allows us to conveniently iterate through the arguments.
+
+for VAR
+do
+   ... body
+done
+
+@@
+2. FOR VAR IN CONSTRUCT
+
+for VAR in val1 val2 val3
+do
+    ... body
+done
+
+This will iterate through val1, val2, val3.
+
+
+@@
+3. A C-LIKE FOR CONSTRUCT
+
+for ((i=0; i<$count; i++))
+do
+    ... body
+done
+
+We have (( )) here for an arithmetical expression. Spaces are not important here. Comparison is allowed as in C. Increments are allowed just as in C, i.e. ++, --, i=i+2 are allowed.

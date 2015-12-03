@@ -1,0 +1,8 @@
+Positional parameters:
+
+$0    - the name of the program
+$1... - parameter values
+$*    - all the parameters: literally, i.e. one 'word' is one argument
+$@    - all the parameters: one filename/variable is one argument
+$#    - the count of the parameters (doesn't include $0)
+

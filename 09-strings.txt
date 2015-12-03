@@ -1,0 +1,70 @@
+$ PIC=abba
+
+@@
+REMOVING TRAILING PARTS OF A STRING
+
+# ECHOES THE STRING AS-IS
+$ echo $PIC
+abba
+
+# AGAIN, ECHOES AS-IS
+$ echo ${PIC}
+abba
+
+# Removes the trailing 'a' character
+$ echo ${PIC%a}
+abb
+
+# Removes ANY trailing character (just one!)
+$ echo ${PIC%?}
+abb
+
+# Attempts to emove the 'c' character, i.e. in this case doesn't remove any:
+$ echo ${PIC%c}
+abba
+
+# Removes any number of characters after 'b' - NON-GREEDY VERSION, so the SHORTEST MATCH has been removed
+$ echo ${PIC%b*}
+ab
+
+# Removes the LONGEST MATCHING b* pattern from the end of the string - GREEDY VERSION
+$ echo ${PIC%%b*}
+a
+
+
+@@
+REMOVING LEADING CHARACTERS FROM A STRING
+
+# Remove the first character
+$ echo ${PIC#?}
+bba
+
+# Remove any number of leading characters, this number defaults to zero, so nothing is removed
+$ echo ${PIC#*}
+abba
+
+# Remove any number of leading characters before b (NON-GREEDY - SHORTEST MATCH)
+$ echo ${PIC#*b}
+ba
+
+# Remove any number of leading characters before b (GREEDY - LONGEST MATCH)
+$ echo ${PIC##*b}
+a
+
+@@
+REMOVING FROM THE MIDDLE OF THE STRING
+
+This uses a sed-like syntax
+
+$ FN=abba
+$ echo ${FN/bb/tacam}
+atacama
+ ^^^^^  --- Replaced string
+
+@@
+3. SUBSTRING EXTRACTION
+
+echo ${SHELL:2:3}
+in/
+
+This reduced /bin/bash to just in/ . Note that indexes are zero-based.

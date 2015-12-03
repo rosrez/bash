@@ -1,0 +1,59 @@
+@@
+1.
+
+Quotes are needed when assigning a value to a string, but only if the value contains spaces:
+
+Var="This is a string"			# legal assignment
+var2=This_is_is_also_a_string		# legal asssignment, too
+
+@@
+2.
+
+If we want to combine a variable name with some arbitrary text (say, in an echo statement), we need to set it apart from the rest of the text with {} braces:
+
+echo prefix${VAR}suffix
+
+@@
+3.
+
+declare -x VAR -- is identical to
+export VAR
+
+@@
+4.
+
+You can assign a value to a variable temporarily, for the duration of one command, like this:
+
+DIR=$HOME cd $DIR
+
+NOTE: you don't have to export the variable using this syntax
+
+@@
+5. 
+
+printf syntax looks like this:
+
+VAR=13; printf "VAR = %d\n" $VAR
+
+@@
+6. You escape a % sign in printf with another % sign:
+
+printf "return rate is %d %%" $RATE
+
+@@
+7.
+
+printf and width specifiers examples:
+
+FLOATING POINT
+$ printf "value is %6.2f\n" $VAR
+value is  23.00
+
+SPACE-PADDED
+$ printf "value is %6d\n" $VAR
+value is     23
+
+ZERO-PADDED
+$ printf "value is %06d\n" $VAR
+value is 000023
+
