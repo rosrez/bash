@@ -1,0 +1,46 @@
+WAYS TO DO INTEGER MATH IN BASH
+
+@@ DECLARE
+1. Declare
+
+declare -i COUNT=0
+COUNT+=1            # declare makes bash notice that this is a an integer operation
+
+@@ LET
+2.
+let TOTAL+=SIZ      # let signals integer expression
+
+@@ DOUBLE PARENTHESES
+3.
+(( SUM+=SIZ ))      # (( )) is for arithmetics, too
+
+@@ DOLLAR DOUBLE PATHENTHESES
+4.
+ALL=$((ALL+SIZ))    # $(()) is for math as well 
+
+@@
+5. SINGLE BRACKET COMPARISONS
+
+Strings
+
+[ string1 == string2 ]
+[ string1 != string2 ]
+[ string1 < string2 ]
+[ string1 > string2 ]
+
+Math
+
+[ int1 -eq int2 ]
+[ int1 -ne int2 ]
+[ int1 -gt int2 ]
+[ int1 -ge int2 ]
+[ int1 -lt int2 ]
+[ int1 -le int2 ]
+
+@@
+6. DOUBLE BRACKET COMMANDS (MODERN VERSION)
+
+if [[ $VAR == *.txt ]] # THIS IS NOT GLOBBING, IT'S THE SHELL PATTERN MATCHING, i.e. CHECK IF THE VAR ENDS IN .txt
+
+if [[ $VAR =~ regexp ]] # THIS IS REGULAR EXPRESSION MATCHING. NO SPECIAL ESCAPING FOR ^, * or $ REQUIRED!
+
