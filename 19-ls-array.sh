@@ -15,11 +15,26 @@
 # -rw-rw-r--. 1 admin admin  708 Dec  1 22:06 01-redirection.txt
 # 0           1 2     3      4   5    6 7     8    --- ZERO-BASED INDEXES
 
+# it's necessary to declare CNTM as an associative array for month names to work as indexes
+declare -A CNTM     
+
 while read -a LSOUT 
 do
+    if [[ $LSOUT == 'total' ]]; then continue; fi
+
     DOM=${LSOUT[6]}
     let CNT[DOM]++
+    MON=${LSOUT[5]}
+    let CNTM[$MON]++
 done
+
+for MON in ${!CNTM[@]}
+do
+    printf "%-04.4s: %d " $MON ${CNTM[$MON]} 
+done
+
+echo
+echo -------
 
 if [[ "$1" == "skipzero" ]]
 then
