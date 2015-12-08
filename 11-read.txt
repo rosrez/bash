@@ -17,7 +17,7 @@ $ echo $VAR
 OK
 
 @@
-3. READ PARSING MULTI-WORD INPUT
+3. READ PARSING MULTI-WORD INPUT INTO A GROUP OF VARIABLES
 
 $ read A B
 here is my answer
@@ -41,3 +41,17 @@ is
 
 $ echo $C                           <--- the last word goes into the third variable
 my answer
+
+@@
+4. READ PARSING MULTI-WORD INPUT INTO AN ARRAY
+
+$ read -a ARR; let i=0; while (( i < 5 )); do echo $i ${ARR[i]}; let i++; done
+
+5 6 7 8 9   <--- THIS IS OUR INPUT: THE VALUES GO INTO ${ARR[0]}, ${ARR[1]}
+and so on.
+
+0 5         <--- OUTPUT STARTS
+1 6
+2 7
+3 8
+4 9

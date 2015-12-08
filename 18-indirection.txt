@@ -1,0 +1,23 @@
+@@
+1. INDIRECTION
+
+Suppose we define a variable:
+
+$ ABC=-5
+
+And another one whose VALUE is identical to the first variable's NAME:
+
+$ VAR=ABC
+
+We may check values of the variables:
+
+$ echo $ABC
+-5
+$ echo $VAR
+ABC
+
+What if we would like to refer to the first value via the second one, i.e. tell bash 'give me the value of the variable whose name is stored in VAR'? Here is the way to do it:
+
+$ echo ${!VAR}
+-5
+

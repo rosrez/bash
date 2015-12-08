@@ -1,4 +1,4 @@
-Redirecting stdout:
+Redirecting stdin:
 
 wc < file
 

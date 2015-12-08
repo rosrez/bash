@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # This accepts output from the 'ls -l' command and parses it.
+
 # This is a helper on what ls -l outputs.
 
 #  PERM      LN USR   GRP    SIZ MON DAY YRTM FILNM

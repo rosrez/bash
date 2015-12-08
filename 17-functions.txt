@@ -1,0 +1,38 @@
+@@
+1. PLACEMENT OF FUNCTIONS WITHIN A SCRIPT.
+
+If control jumps over a function and the script tries to invoke the function later on, like this
+
+if (....)
+then
+function func()
+{
+}
+
+}
+
+func()
+
+... this will result in an undefined function func(). So functions are commonly placed at the beginning of a script.
+
+@@
+2. PASSING PARAMETERS TO FUNCTIONS
+
+Parameters are passed exactly as parameters to scripts or commands inside a script:
+
+func arg1 arg2 arg3
+
+Inside a function, these parameters are referred to just as positional parameters (command line args) inside the 'main' body of the script:
+
+function func()
+{
+    echo $1 $2 $3
+}
+
+The positional parameters passed to the main body of the script become visible once we return from a function.
+
+@@
+3. VARIABLE SCOPE
+
+'local VAR' is used to declare a local variable inside a function.
+'declare VAR' OR 'typeset VAR' can be used to declare a local variable as well.

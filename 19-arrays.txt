@@ -1,0 +1,103 @@
+@@
+1. ARRAY SYNTAX: ASSIGNMENT
+
+We can assign a value to an array index like this:
+
+$ VAR[3]=9
+
+Index may itself be a variable value or an arithmetic expression:
+
+$ NDX=5
+
+# NDX without a dollar sign since it's interpeted as an arithmetic expression
+# $NDX will do just fine here, as well
+$ VAR[NDX]=25       
+
+@@
+2. ARRAY SYNTAX: ACCESSING ELEMENTS
+
+This syntax is used to access an array element:
+
+$ echo ${VAR[3]}
+9
+$ echo ${VAR[5]}
+25
+
+This syntax is necessary not to confuse the shell. If we try to access elements as $VAR[i], we won't get what we expect:
+
+$ echo $VAR[3]
+[3]
+$ echo $VAR[5]
+[5]
+
+Which is just $VAR (empty) and appended [3] string.
+
+@@
+3. ARRAY INDEXES ARE ZERO-BASED
+
+@@
+4. NUMBER OF ELEMENTS IN AN ARRAY
+
+This number can be obtained as ${#arrayname}
+
+@@
+5. ARRAY INITIALIZATION AS A LIST
+
+declare -a DIGNAM
+DIGNAM=(zero one two three four [5]=five six seven eight nine)
+
+() denotes a list of values
+
+@@
+6. SPARSE ARRAYS
+
+Suppose ARR is only partially set:
+
+$ ARR[5]=25
+$ ARR[8]=64
+$ ARR[6]=36
+
+To display all non-empty (i.e. set) elements, we use:
+
+$ echo ${ARR[@]}
+25 36 64
+
+To display INDEXES of all non-empty elements, we use:
+
+echo ${!ARR[@]}
+5 6 8
+
+We can thus easily loop through either the non-empty elements:
+
+           VVVVVVVVV
+$ for i in ${ARR[@]}; do echo $i; done
+25
+36
+64
+
+or through the indexes of non-empty elements (the elements themselves can be easily referenced based on indexes):
+
+           VVVVVVVVVV
+$ for i in ${!ARR[@]}; do echo $i ${ARR[i]}; done
+5 25
+6 36
+8 64
+
+@@
+7. ASSOCIATIVE ARRAYS (non-integer indexes). AVAILABLE AS OF BASH 4.0.
+
+Use the declare -A statement to declare an associative array. Then, an index could be ANY STRING.
+
+$ declare -A STRARR
+$ STRARR["dog"]=dog2
+$ STRARR["cat"]=cat3
+ 
+All other array properties still hold:
+
+$ echo ${STRARR[@]}     # prints non-empty array elements
+cat3 dog2
+
+$ echo ${!STRARR[@]}    # prints INDEXES of non-empty array elements
+cat dog
+
+
